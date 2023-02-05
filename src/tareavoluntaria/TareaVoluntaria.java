@@ -17,23 +17,26 @@ public class TareaVoluntaria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int menu = 10;
-        HashSet<Cliente> listaClientes = new HashSet<>();
+        Scanner sc = new Scanner(System.in); //Para introducir datos.
+        int menu = 10; //Variable para el menú.
+        HashSet<Cliente> listaClientes = new HashSet<>(); //Estructura de almacenamiento.
 
+        //Creamos 4 clientes de prueba
         Cliente c1 = new Cliente("00000000T", true, "Me llamo Ralph");
         Cliente c2 = new Cliente("R11111111", false, "Empresa de las falsas");
         Cliente c3 = new Cliente("22222222Z", true, "Juanito");
         Cliente c4 = new Cliente("1q", true, "Cliente de prueba.");
         
-
+        //Añadimos los clientes a la estructura de almacenamiento.
         listaClientes.add(c1);
         listaClientes.add(c2);
         listaClientes.add(c3);
         listaClientes.add(c4);
 
+        //Creamos un menú, mientras sea distinto de 6 se repetirá.
         while (menu != 6) {
 
+            //Mostramos el menú.
             System.out.println("1.- Nuevo \n"
                     + "2.- Registrar Entrega \n"
                     + "3.- Calcular Kilos Aceite \n"
@@ -41,15 +44,17 @@ public class TareaVoluntaria {
                     + "5.- Listado de personas \n"
                     + "6.- Salir \n");
 
+            //Solicitamos al usuario la opción.
             menu = Integer.parseInt(sc.nextLine());
 
             switch (menu) {
                 case 1:
-                    Cliente c = new Cliente();
+                    Cliente c = new Cliente(); //Creamos un objeto de tipo clente.
                     System.out.println("Introduce los datos del Socio, NIF");
-                    String nif = sc.nextLine();
-                    c.setNif(nif);
+                    String nif = sc.nextLine(); //Solicitamos al usuario el nif
+                    c.setNif(nif); //Lo añadimos al cliente creado.
 
+                    //Lo mismo con el resto de atributos.
                     System.out.println("¿Es persona físisca?, Si o No");
                     String personaFisica = sc.nextLine();
                     if (personaFisica.equalsIgnoreCase("SI")) {
@@ -102,19 +107,22 @@ public class TareaVoluntaria {
                     break;
                 case 4:
 
-                    float kgTotales = 0;
+                    float kgTotales = 0; //Variable para contabilizar los kg totales.
 
                     for (Cliente lc : listaClientes) {
 
+                        //Recorremos todos los clientes y actualizamos los kgtotales.
                         kgTotales = kgTotales + lc.getKilosAceitunas();
 
                     }
                     
+                    //Una vez salimos del bucle, mostramos la suma de todos los kg.
                     System.out.println("Los Kg totales de aceituna son: " + kgTotales);
 
                     break;
                 case 5:
 
+                    //Mostramos por pantalla los clientes.
                     for (Cliente lc : listaClientes) {
 
                         System.out.println(lc.toString());
@@ -124,9 +132,6 @@ public class TareaVoluntaria {
                     break;
 
             }
-
         }
-
     }
-
 }

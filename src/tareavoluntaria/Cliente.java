@@ -72,11 +72,15 @@ public class Cliente {
         return "Cliente{" + "nif=" + nif + ", personaFisica=" + personaFisica + ", denominacion=" + denominacion + ", kilosAceitunas=" + kilosAceitunas + ", rendimiento=" + rendimiento + '}';
     }
 
+    //Método para registrar la entrega, indicamos dos valores y actualizamos
+    //Los valores del objeto cliente.
     public void registrarEntrega(float kilosAceitunas, float rendimiento){
         this.kilosAceitunas = kilosAceitunas;
         this.rendimiento = rendimiento;
     }
     
+    //Calculamos los kilos de aceite que produce el cliente con los valores
+    //que obtenemos de sus atributos, devolvemos el valor en tipo float.
     public float calcularKilosAceite(){
         float aceiteProducido;
         
